@@ -5,5 +5,6 @@
     <string name="result">Your Result {score}/5</string>
     <string name="correct_answears">Correct answears</string>
     <string name="restart">Restart</string>
+    <string name="theme">Theme</string>
 
 </resources>

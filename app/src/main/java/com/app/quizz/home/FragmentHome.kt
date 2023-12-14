@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.app.quizz.R
 import com.app.quizz.databinding.FragmentHomeBinding
@@ -25,6 +26,14 @@ class FragmentHome : Fragment() {
             val fragmentTransaction = parentFragmentManager.beginTransaction()
             fragmentTransaction.replace(R.id.fragmentContainerView, FragmentQuizz())
             fragmentTransaction.commit()
+        }
+
+        binding.switcher.setOnCheckedChangeListener { compoundButton, b ->
+            when (b) {
+                true -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
+                false -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
         }
     }
 }
