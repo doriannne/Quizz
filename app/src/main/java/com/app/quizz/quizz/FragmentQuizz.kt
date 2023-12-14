@@ -1,5 +1,7 @@
 package com.app.quizz.quizz
 
+import android.animation.Animator
+import android.animation.Animator.AnimatorListener
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -30,11 +32,27 @@ class FragmentQuizz : Fragment() {
             list = listObserved
             binding.progressBar.visibility = View.GONE
             binding.mainElements.visibility = View.VISIBLE
-            nextQuestion()
+            binding.mainElements.alpha = 0f
+            setQuestion()
         }
     }
 
     private fun nextQuestion() {
+        binding.mainElements.animate()
+            .alpha(0f)
+            .setDuration(200)
+            .setListener(object: AnimatorListener {
+                override fun onAnimationStart(p0: Animator) {}
+                override fun onAnimationEnd(p0: Animator) {
+                    setQuestion()
+                }
+                override fun onAnimationCancel(p0: Animator) {}
+                override fun onAnimationRepeat(p0: Animator) {}
+            })
+            .start()
+    }
+
+    private fun setQuestion() {
         if (currentPosition >= 4) {
             val fragmentTransaction = parentFragmentManager.beginTransaction()
             val nextFragment = FragmentResult()
@@ -65,6 +83,12 @@ class FragmentQuizz : Fragment() {
                 list?.get(currentPosition)?.userAnswear = 4
                 nextQuestion()
             }
+
+            binding.mainElements.animate()
+                .alpha(1f)
+                .setDuration(200)
+                .setListener(null)
+                .start()
         }
     }
 }
