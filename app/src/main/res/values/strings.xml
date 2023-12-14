@@ -2,5 +2,8 @@
     <string name="app_name">Quizz</string>
     <string name="start">Почати квіз</string>
     <string name="question">Скільки палців у людини?</string>
+    <string name="result">Your Result {score}/5</string>
+    <string name="correct_answears">Correct answears</string>
+    <string name="restart">Restart</string>
 
 </resources>

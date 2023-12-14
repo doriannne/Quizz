@@ -1,5 +1,7 @@
 package com.app.quizz.quizz
 
+import java.io.Serializable
+
 data class QuizzData(
     val id: Int,
     val question: String,
@@ -7,5 +9,6 @@ data class QuizzData(
     val value2: String,
     val value3: String,
     val value4: String,
-    val trueanswear : String
-)
+    val trueanswear : Int,
+    var userAnswear : Int = -1
+) : Serializable
